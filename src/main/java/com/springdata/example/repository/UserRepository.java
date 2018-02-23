@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.springdata.example.entity.User;
-import com.springdata.example.entity.UserInfo;
 
 
-//@RepositoryRestResource(excerptProjection = UserInfo.class)
+
 public interface UserRepository extends CrudRepository<User, String> {
 	
 	public List<User> findAllByOrderByFirstNameAsc();
@@ -35,5 +32,5 @@ public interface UserRepository extends CrudRepository<User, String> {
 
 
 	@Query("{'firstName':{$regex:?0,$options:'i'}}")
-	public User findByNameIgnoreCase(@Param("firstName") String firstName);
+	public User findByNameIgnoreCase(String firstName);
 }
