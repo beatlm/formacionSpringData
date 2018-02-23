@@ -17,16 +17,19 @@ public interface UserRepository extends CrudRepository<User, String> {
 	public List<User> findAllByOrderByFirstNameDesc();
 	
 	public List<User> findAllByOrderByAgeAsc();
+	
+	public List<User> findAllByOrderByAgeDesc();
 
-	public User findByFirstName(@Param("firstName") String firstName);
+	public User findByFirstName( String firstName);
 
-	public List<User> findByLastName(@Param("lastName")String lastName);
+	public List<User> findByLastName(String lastName);
+	public List<User> findByAge();
 
-	public User findByFirstNameAndLastName(@Param("firstName") String firstName,@Param("lastName") String lastName);
+	public User findByFirstNameAndLastName( String firstName, String lastName);
 
-	public Long countByFirstName(@Param("firstName")String firstname);
+	public int countByFirstName(String firstname);
 
-	public String deleteByFirstName(@Param("firstName")String firstname);
+	public String deleteByFirstName(String firstname);
 
 
 	@Query("{'firstName':{$regex:?0,$options:'i'}}")
